@@ -1,0 +1,15 @@
+version: "3.7"
+services:
+    jenkins:
+        build:
+            dockerfile: Dockerfile
+        container_name: jenkinsDev
+
+        ports:
+            - ${PORT-3310}:8080
+
+        environment:
+            FORCE_COLOR: 1
+            JENKINS_USERNAME: ${JENKINS_USERNAME-jenkinsDev}
+            JENKINS_PASSWORD: ${JENKINS_PASSWORD-rIIrBe3SLH8W9HNVqJoRAI}
+            JENKINS_BASE_URL: http://localhost:${PORT-3310}

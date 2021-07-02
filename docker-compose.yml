@@ -1,0 +1,24 @@
+version: "3.7"
+services:
+    jenkins:
+        build:
+            context: .
+
+        restart: always
+
+        ports:
+            - 8080
+
+        networks:
+            - default
+
+        environment:
+            JAVA_OPTS: ${JENKINS_JAVA_OPTS--Djenkins.install.runSetupWizard=false}
+            CASC_JENKINS_CONFIG: /var/jenkins_home/casc_configs
+
+        volumes:
+            - jenkinsData:/var/jenkins_home
+
+volumes:
+    jenkinsData:
+        driver: local

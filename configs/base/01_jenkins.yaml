@@ -1,0 +1,38 @@
+jenkins:
+    agentProtocols:
+        - JNLP4-connect
+        - Ping
+    authorizationStrategy:
+        globalMatrix:
+            permissions:
+                - "Overall/Administer:authenticated"
+    crumbIssuer:
+        standard:
+            excludeClientIPFromCrumb: true
+    remotingSecurity:
+        enabled: true
+    securityRealm:
+        local:
+            allowsSignup: false
+            enableCaptcha: false
+    slaveAgentPort: -1
+    systemMessage: "Jenkins configured automatically by Jenkins Configuration as Code plugin\r\n"
+    updateCenter:
+        sites:
+            - id: default
+              url: "https://updates.jenkins.io/update-center.json"
+security:
+    globalJobDslSecurityConfiguration:
+        useScriptSecurity: false
+    queueItemAuthenticator:
+        authenticators:
+            - global:
+                  strategy: "triggeringUsersAuthorizationStrategy"
+unclassified:
+    location:
+        url: "${JENKINS_BASE_URL}"
+    mailer:
+        charset: UTF-8
+        useSsl: false
+jobs:
+    - file: /usr/share/jenkins/ref/initJobs/initSeedJobs.groovy

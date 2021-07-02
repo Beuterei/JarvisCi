@@ -1,0 +1,34 @@
+version: "3.7"
+services:
+    jenkins:
+        build:
+            dockerfile: Dockerfile.production
+        container_name: jenkinsProd
+
+        ports:
+            - 3310:8080
+
+        environment:
+            VIRTUAL_HOST: ${HOST?Missing environment variable see doku}
+            VIRTUAL_PORT: 8080
+            LETSENCRYPT_HOST: ${HOST:?Missing environment variable see readme}
+            JENKINS_USERNAME: ${JENKINS_USERNAME-jenkinsProd}
+            JENKINS_PASSWORD: ${JENKINS_PASSWORD?Missing environment variable see doku}
+            JENKINS_BASE_URL: ${JENKINS_BASE_URL?Missing environment variable see doku}
+            SECRET_GITHUB_USERNAME: ${SECRET_GITHUB_USERNAME-}
+            SECRET_GITHUB_PASSPHRASE: ${SECRET_GITHUB_PASSPHRASE-}
+            SECRET_SERVER_USERNAME: ${SECRET_SERVER_USERNAME-}
+            SECRET_SERVER_PASSPHRASE: ${SECRET_SERVER_PASSPHRASE-}
+            SECRET_GITHUB_TOKEN: ${SECRET_GITHUB_TOKEN-}
+            JOB_REPO_URL: ${JOB_REPO_URL-https://github.com/beuluis/jenkinsJobsTest}
+            JOB_REPO_BRANCH: ${JOB_REPO_BRANCH-master}
+
+        secrets:
+            - githubSSHKey
+            - serverSSHKey
+
+secrets:
+    githubSSHKey:
+        file: githubSSHKey
+    serverSSHKey:
+        file: serverSSHKey

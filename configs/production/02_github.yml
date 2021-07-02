@@ -1,0 +1,14 @@
+credentials:
+  system:
+    domainCredentials:
+      - credentials:
+         - string:
+            id: "gitHubToken"
+            scope: GLOBAL
+            secret: "${SECRET_GITHUB_TOKEN}"
+unclassified:
+    gitHubPluginConfig:
+      configs:
+      - credentialsId: "gitHubToken"
+        name: "github"
+      hookUrl: "${JENKINS_BASE_URL}/github-webhook/"
