@@ -9,6 +9,7 @@ services:
             - 8080
 
         networks:
+            - default
             - nginxproxynet
 
         environment:
