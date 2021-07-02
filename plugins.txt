@@ -55,7 +55,7 @@ bootstrap5-api:5.0.1-2
 cloudbees-folder:6.15
 jquery3-api:3.6.0-1
 pipeline-stage-tags-metadata:1.8.5
-junit:1.50
+junit:1.51
 workflow-cps-global-lib:2.21
 plain-credentials:1.7
 echarts-api:5.1.2-2
