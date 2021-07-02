@@ -8,6 +8,9 @@ services:
         ports:
             - 8080
 
+        networks:
+            - nginxproxynet
+
         environment:
             VIRTUAL_HOST: ${HOST?Missing environment variable see doku}
             VIRTUAL_PORT: 8080
@@ -26,6 +29,11 @@ services:
         secrets:
             - githubSSHKey
             - serverSSHKey
+
+networks:
+    nginxproxynet:
+        name: ${PROXY_NETWORK_NAME-nginxproxynet}
+        external: true
 
 secrets:
     githubSSHKey:
