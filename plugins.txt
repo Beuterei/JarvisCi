@@ -77,4 +77,4 @@ branch-api:2.6.4
 token-macro:2.15
 docker-workflow:1.26
 authorize-project:1.4.0
-github:1.33.1
+generic-webhook-trigger:1.74

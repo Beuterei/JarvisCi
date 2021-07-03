@@ -8,7 +8,7 @@ job('Deploy Jobs (Production)') {
             remote {
                 name('GitJobs')
                 url(env['JOB_REPO_URL'])
-                credentials('gitHubKey')
+                credentials('scmKey')
             }
             branch(env['JOB_REPO_BRANCH'])
         }
